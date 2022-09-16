@@ -2,6 +2,7 @@
 use App\Http\Controllers\{
     UserController
 };
+use App\Http\Controllers\Admin\CommentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 | contém o grupo de middleware "web". Agora, que tal criar algo grande!
 |
 */
+Route::get('/users.{id}/comments', [CommentController::class, 'index'])->name('comments.index');
 
 Route::delete('/users.{id}', [UserController::class, 'destroy'])->name('users.destroy');
 

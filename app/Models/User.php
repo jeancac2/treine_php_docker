@@ -51,9 +51,14 @@ class User extends Authenticatable
             }
         })->get();
         return $users;
-    }
     // Seria mais sofisticado se tivesse também:
     //public function storeUser(){}
     //public function upDateUser(){}
+    }
+    // relacionamento 1 para n
+    public function comments()
+    {
+        return $this->hasMany(Comment::class); // os parametros de foreign key e local key já estão sendo inseridos por default
+    }
 
 }
