@@ -49,7 +49,9 @@ class User extends Authenticatable
                 $query->where('email', $search);   // com mais de um filtro
                 $query->orWhere('name', 'LIKE', "%{$search}%");
             }
-        })->get();
+        })
+        ->with('comments')
+        ->paginate(15);
         return $users;
     // Seria mais sofisticado se tivesse também:
     //public function storeUser(){}

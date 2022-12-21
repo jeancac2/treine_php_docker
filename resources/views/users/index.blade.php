@@ -14,6 +14,9 @@
     <button class="shadow bg-purple-500 hover-bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"> Pesquisar </button>
 </form>
 
+<div class="py-4">
+  {{ $users->appends(['search' => request()->get('search', '')])->links() }}
+</div>
 <table class="min-w-full leading-normal shadow-md rounded-lg overflow-hidden">
     <thead>
         <tr>
@@ -56,7 +59,7 @@
             <a href="{{ route('users.show', $user->id) }}" class="bg-orange-200 rounded-full py-2 px-6">Detalhes</a>
         </td>
         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-          <a href="{{ route('comments.index', $user->id) }}" class="bg-blue-200 rounded-full py-2 px-6">Anotações (0)</a>
+          <a href="{{ route('comments.index', $user->id) }}" class="bg-blue-200 rounded-full py-2 px-6">Anotações ({{$user->comments->count()}})</a>
       </td>
     </tr>
     @endforeach
